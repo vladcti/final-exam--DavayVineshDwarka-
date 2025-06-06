@@ -1,0 +1,123 @@
+section 1 prompt 1:
+Write pseudocode for a CLI Task Manager app using only beginner Python concepts taught through Week 10 of an introductory programming course. The pseudocode should support adding tasks, listing tasks, and removing tasks from memory using lists and dictionaries. Use only basic control flow, input/output, function structure, and a while loop menu.
+ai response:
+Start
+Define function add_task(task, task_list)
+    Append task to task_list
+    Print confirmation
+
+Define function remove_task(index, task_list)
+    If index is valid
+        Remove task at index
+        Print confirmation
+    Else
+        Print error message
+
+Define function list_tasks(task_list)
+    If task_list is empty
+        Print "No tasks available"
+    Else
+        For each task in task_list:
+            Print task with index
+
+Define function display_menu()
+    Print menu options (1. Add, 2. List, 3. Remove, 4. Quit)
+
+Main:
+    Create empty task list
+    While True:
+        Call display_menu()
+        Get user input
+        If input == 1:
+            Ask for new task
+            Call add_task()
+        If input == 2:
+            Call list_tasks()
+        If input == 3:
+            Ask for index
+            Call remove_task()
+        If input == 4:
+            Break loop
+End
+course constraint:
+This AI-generated pseudocode complies with concepts covered in our course from Week 1 to Week 6. It only uses basic input() and print() from Week 2, conditionals from Week 3, reusable function structure from Week 4, list operations from Week 5, and basic control flow for user input. No external libraries or advanced features were suggested, ensuring full alignment with Curtin’s course constraints for introductory-level implementation.
+refine prompt 1: Revise the pseudocode to include input validation for the menu selection and task index. Ensure the logic aligns with beginner techniques including the use of conditionals and loops for basic input checking.
+
+ai answer:
+
+Update Main:
+After displaying menu:
+    Try to convert user input to integer
+    If not in valid range (1-4):
+        Print error and continue loop
+
+Update remove_task:
+If index is not a number or not in valid range:
+    Print error message
+Else:
+    Remove task
+refine prompt 2: Rewrite the pseudocode to use a dictionary where each task is assigned a unique ID. Reflect use of smart data structures for task management which was used in week 6 of my course
+
+ai answer: Start Define function add_task(task, task_dict, task_id) task_dict[task_id] = task Print confirmation Increment task_id
+
+Define function remove_task(task_id, task_dict)
+    If task_id in task_dict:
+        Delete task
+        Print confirmation
+    Else:
+        Print error
+
+Define function list_tasks(task_dict)
+    If empty:
+        Print "No tasks"
+    Else:
+        For each key, value in task_dict:
+            Print key and task
+
+Main:
+    Initialize task_dict and task_id = 1
+    While True:
+        Display menu and get user choice
+        Validate input
+        Call respective function
+        Break on quit
+End
+COURSE CONSTRAINT CHECK:
+This response applies input validation through simple conditionals and range checks, consistent with the logic introduced in Week 3 – Decisions with Conditionals and practiced extensively in Week 5 – Lists & Loops activities. It uses techniques such as checking user input with if statements and loop control, aligned with course lab examples.
+COURSE CONSTRAINT CHECK:This response reflects Week 6 – Python Dictionaries for smart storage and retrieval. I verified that only core dictionary methods like .get() or in were used. No advanced techniques such as list comprehensions or sorting.
+section 2: prompt:
+
+Please review the following Python script using only beginner-level debugging concepts taught in an introductory course (e.g., print debugging, list iteration, simple conditionals). Identify and explain all errors you find, based on logic and variable usage.
+
+ai answer:
+
+Line in remove_task: if index < len(tas): has a typo. tas should be tasks.
+In list_tasks: for i, t in enumerate(task): is incorrect. The list is named tasks, not task.
+In main: list_task() is a typo. Should be list_tasks().
+There's no input validation or type checks, which may cause runtime issues if wrong data types are passed.
+COURSE CONSTRAINT CHECK:These errors reflect the kinds of mistakes addressed in Week 12 – Testing and Debugging, where we practiced identifying typos, mismatched variable names, and improper function calls through code tracing and error message interpretation.
+2.2: prompt:
+
+Please fix the errors in the original task manager code using only concepts taught in an introductory programming course. The corrected version should use appropriate variable names, function calls, and list logic, and include doctest examples for each function
+
+tasks = []
+
+def add_task(task): tasks.append(task) print(f"Added: {task}")
+
+def remove_task(index): if index < len(tasks): removed = tasks[index] del tasks[index] print(f"Removed: {removed}") else: print("Invalid index!")
+
+def list_tasks(): if not tasks: print("No tasks available.") else: for i, t in enumerate(tasks): print(f"{i+1}: {t}")
+
+def main(): add_task("Buy milk") add_task("Pay bills") add_task("Walk dog") list_tasks() remove_task(1) list_tasks()
+
+if name == "main": main() 
+COURSE CONSTRAINT CHECK:All functions use basic Python logic involving lists and control flow, consistent with material from Week 5 – Loops & Lists. I used print-based debugging and doctest examples as taught in Week 12 – Testing and Debugging. I avoided advanced exception handling or libraries not covered in class.
+SECTION 3 - PROMPT 1:"Review this function using only error handling techniques taught in an introductory programming course (basic try/except only)."
+
+AI RESPONSE:
+1. Add input validation: check if city is a non-empty string before making API call.
+2. Use basic try/except to catch network errors and JSON decoding issues.
+3. Add basic print statements inside except blocks to guide user when something fails.
+4. Avoid nested try/except unless necessary—use clear linear structure.
+COURSE CONSTRAINT CHECK:
+These suggestions align with Week 8 – APIs and External Data, where we learned simple validation and one-level try/except for APIs. Error messages like “Error: City cannot be empty” or “Error: Failed to retrieve data” were common in lab exercises.
